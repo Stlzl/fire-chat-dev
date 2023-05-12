@@ -1,0 +1,70 @@
+.sign-text {
+    padding: 0 0 16px 0;
+}
+
+.screen-sign {
+    background: linear-gradient(65deg, #EE6200, #FF8400);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.form-container {
+    width: 30%;
+    background-color: #F6F1E9;
+    box-shadow: 0px 0px 12px black;
+}
+
+form {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+input {
+    width: 80%;
+    font-size: 16px;
+    border: none;
+    background-color: transparent;
+    border-bottom: 1px solid #444444;
+    padding-left: 8px;
+}
+
+.sign-button {
+    display: block;
+    font-size: 28px;
+    text-align: center;
+    width: 80%;
+    height: 36px;
+    background-color: #FF8400;
+    text-decoration: none;
+    color: #F6F1E9;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 12px;
+}
+
+.sign-button:hover {
+    transform: translateY(-5%);
+    background-color: #EE6200;
+}
+
+label {
+    width: 80%;
+    text-align: left;
+    cursor: pointer;
+}
+
+.icon {
+    font-size: 24px;
+}
+
+input:focus {
+    outline: none;
+}
+
