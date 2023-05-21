@@ -24,9 +24,9 @@ export default function Search() {
 
     async function handleSelect() {
         const combinedId = currentUser.uid > user.uid? currentUser.uid + user.uid : user.uid + currentUser.uid
-        const res = getDoc(doc(db, 'chats', combinedId))
-        if (!(await res).exists) {
-            await setDoc(doc,(db, "chats", combinedId),{messages:[]})
+        const res = await getDoc(doc(db, 'chats', combinedId))
+        if (!res.exists()) {
+            await setDoc(doc(db, "chats", combinedId),{messages:[]})
         }
 
         await updateDoc(doc(db, 'userChats', currentUser.uid,), {

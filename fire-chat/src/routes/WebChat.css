@@ -134,6 +134,7 @@
 .chat {
     display: flex;
     flex-direction: column;
+    overflow-y: scroll;
 }
 
 .chat  > .message {
@@ -150,7 +151,7 @@
 }
 
 .chat  > .user-message {
-    display: inline-block;
+    display: inline;
     background-color: white;
     margin: 6px 12px 12px 12px;
     padding: 4px 6px 4px 6px;
@@ -160,6 +161,7 @@
     width: fit-content;
     max-width: 40%;
     align-self: flex-end;
+    word-wrap: break-word;
 }
 
 .send-button {

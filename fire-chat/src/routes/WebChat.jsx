@@ -7,8 +7,11 @@ import { AuthContext } from "../context/AuthContext"
 import { useNavigate } from "react-router-dom"
 import Search from "./Search";
 import Chat from "./Chat";
+import { ChatContext } from "../context/ChatContext";
 
 export default function WebChat() {
+
+    const { dispatch } = useContext(ChatContext)
 
     const [chats, setChats] = useState([])
     const {currentUser} = useContext(AuthContext)
@@ -31,8 +34,8 @@ export default function WebChat() {
         navigate('/');
     }
 
-    function handleSelect() {
-
+    const handleSelect = (u) => {
+        dispatch({type:"CHANGE_USER", payload:u})
     }
 
     return (
@@ -41,7 +44,7 @@ export default function WebChat() {
                 <div className="sidebar">
                     <div className="navbar">
                         <div className="person">
-                        <div className="profile-image" style={{background: `url('${currentUser.photoURL}')`, backgroundPosition: 'center', backgroundSize: 'cover'}}></div>
+                            <div className="profile-image" style={{background: `url('${currentUser.photoURL}')`, backgroundPosition: 'center', backgroundSize: 'cover'}}></div>
                             <span className="username">{currentUser.displayName}</span>
                         </div>
                         <button className="logout-button" onClick={() => {
@@ -52,14 +55,14 @@ export default function WebChat() {
                     <div className="contact">
                         <Search />
                         {Object.entries(chats)?.map((chat) => (
-                        <div className="person" key={chat[0]} onClick={handleSelect}>
+                        <div className="person" key={chat[0]} onClick={() => handleSelect(chat[1].userInfo)}>
                             <div className="profile-image" style={{background: `url('${chat[1].userInfo.photoURL}')`, backgroundPosition: 'center', backgroundSize: 'cover'}}></div>
                             <span className="username">{chat[1].userInfo.displayName}</span>
                         </div>
                         ))}
                     </div>
                 </div>
-                <Chat />
+                <Chat/>
             </div>
         </div>
     )
